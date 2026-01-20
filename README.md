@@ -24,6 +24,7 @@ instagram_usage_lifestyle.csv
 
 
 ## Структура проекта
+```
 data/
 raw/ # исходные данные (не хранятся в git)
 processed/ # обработанные данные (не хранятся в git)
@@ -40,7 +41,7 @@ streamlit_app/
 app.py
 requirements.txt
 README.md
-
+```
 ## Установка зависимостей
 ```bash
 pip install -r requirements.txt
