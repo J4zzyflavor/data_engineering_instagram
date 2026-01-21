@@ -41,6 +41,8 @@ def transform_data(df: pd.DataFrame) -> pd.DataFrame:
             df_transformed[column] = pd.to_numeric(
                 df_transformed[column],
                 errors="coerce"
-            )
+            )      
+            median_value = df_transformed[column].median()
+            df_transformed[column] = df_transformed[column].fillna(median_value)
 
     return df_transformed
