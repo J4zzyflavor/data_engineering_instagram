@@ -44,5 +44,21 @@ def transform_data(df: pd.DataFrame) -> pd.DataFrame:
             )      
             median_value = df_transformed[column].median()
             df_transformed[column] = df_transformed[column].fillna(median_value)
+            
+    # Расчёт агрегированного показателя активности пользователя
+    activity_columns = [
+        "daily_active_minutes_instagram",
+        "sessions_per_day",
+        "followers_count",
+        "following_count",
+    ]
 
+    existing_activity_columns = [
+        col for col in activity_columns if col in df_transformed.columns
+    ]
+
+    if existing_activity_columns:
+        df_transformed["activity_score"] = (
+            df_transformed[existing_activity_columns].sum(axis=1)
+        )
     return df_transformed
